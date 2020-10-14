@@ -11,7 +11,20 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - ./data:/bitnami/redis/data
+      - ./redis_data:/bitnami/redis/data
+
+  db:
+    image: mysql:5.7
+    container_name: 'mdb'
+    restart: always
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: admin
+      MYSQL_ROOT_PASSWORD: admin
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql_data:/var/lib/mysql
 
 # volumes:
 #   redis_data:
