@@ -102,7 +102,15 @@ peewee and sqlalchemly don't implement their own db connector, they provide a la
 https://realpython.com/python-json/
 
 
+# Env
+1. virtualenv -p python3 env
+2. . env/bin/activate OR source env/bin/activate
+3. pip install -r requirements.txt
 
+
+#Test
+1. Login form
+curl -i -H "Content-Type: application/x-www-form-urlencoded" -d "username=dunglam&password=1234" -X POST http://localhost:3000/api/login
 
 
 
