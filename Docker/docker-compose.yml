@@ -18,14 +18,15 @@ services:
     container_name: 'mdb'
     restart: always
     environment:
-      MYSQL_DATABASE: db
-      MYSQL_USER: admin
-      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: tadp
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: dryan
     ports:
       - '3306:3306'
     volumes:
-      - ./mysql_data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
 
-# volumes:
-#   redis_data:
-#     driver: local
+volumes:
+  mysql_data:
+    driver: local

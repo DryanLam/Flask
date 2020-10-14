@@ -115,6 +115,15 @@ set name "Dryan"
 set raw '{"str": "example", "int": 20}'
 
 
+# Provisioning MySQL
+1. docker-compose up -d
+2. sh restore.sh
+
+
+# Backup MySQL
+sh backup.sh
+
+
 #Test
 1. Login form
 curl -i -H "Content-Type: application/x-www-form-urlencoded" -d "username=dunglam&password=1234" -X POST http://localhost:3000/api/login
