@@ -108,6 +108,11 @@ https://realpython.com/python-json/
 3. pip install -r requirements.txt
 
 
+# To acces redis >> redis client-cli
+docker run --name rdb -p 6379:6379 redis
+docker exec -it rdb redis-cli
+
+
 #Test
 1. Login form
 curl -i -H "Content-Type: application/x-www-form-urlencoded" -d "username=dunglam&password=1234" -X POST http://localhost:3000/api/login
