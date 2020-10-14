@@ -3,6 +3,7 @@ version: '3'
 services:
   redis:
     image: 'docker.io/bitnami/redis:6.0-debian-10'
+    container_name: 'rdb'
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
@@ -10,7 +11,7 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - 'redis_data:/bitnami/redis/data'
+      - redis_data:/bitnami/redis/data
 
 volumes:
   redis_data:

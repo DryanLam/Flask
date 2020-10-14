@@ -111,6 +111,8 @@ https://realpython.com/python-json/
 # To acces redis >> redis client-cli
 docker run --name rdb -p 6379:6379 redis
 docker exec -it rdb redis-cli
+set name "Dryan"
+set raw '{"str": "example", "int": 20}'
 
 
 #Test
