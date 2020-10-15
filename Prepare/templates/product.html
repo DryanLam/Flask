@@ -17,30 +17,9 @@
     <div class="text-center mb-4">
     <h1 class="h3 mb-3 font-weight-normal">TADP - MICROSERVICES</h1>
     <img class="mb-4" src="../static/img/API-icon.png" alt="" width="100" height="80">
-    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-    <p>Don't have an account yet? <a href="/register">Register here</a></p>
-
-  {% if errors %}
-    <div class="alert alert-danger" role="alert" style="font: 0.9em italic;">
-      {% for error in errors %}
-      <p>- {{ error }}</p>
-      {% endfor %}
-    </div>
-  {% endif %}
-
+    <h1 class="h3 mb-3 font-weight-normal">Products</h1>
     </div>
 
-    <div class="form-label-group">
-    <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    <label for="inputEmail">Email address</label>
-    </div>
-
-    <div class="form-label-group">
-    <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
-    <label for="inputPassword">Password</label>
-    </div>
-
-    <button class="btn btn-lg btn-primary btn-block" type="submit" id="btnLogin" name="btnLogin">Login</button>
     <p class="mt-5 mb-3 text-muted text-center">&copy; KMS - 2020</p>
 </form>
 

@@ -19,7 +19,9 @@ print("App & Database init done!")
 from views.index import index_blp
 from views.login import login_blp
 from views.register import register_blp
+from views.product import product_blp
 
 app.register_blueprint(index_blp)
 app.register_blueprint(login_blp)
 app.register_blueprint(register_blp)
+app.register_blueprint(product_blp)
