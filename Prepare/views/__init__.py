@@ -8,12 +8,13 @@ app.config['MYSQL_DATABASE_DB'] = 'tadp'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 app.secret_key = 'sadfuwhkanflk'
 
-mysql = MySQL()
 # MySQL configurations
+print("Initializing database connection!")
+mysql = MySQL()
 mysql.init_app(app)
 conn = mysql.connect()
 curs = conn.cursor()
-print("App & Database init done!")
+print("Database connected!")
 
 
 from views.index import index_blp

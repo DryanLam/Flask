@@ -4,7 +4,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 login_blp = Blueprint('login_blp', __name__)
 
-# @app.route('/login', methods=['GET'])
 @login_blp.route('/login', methods=['GET'])
 def getLogin():
     if 'email' in session:
@@ -12,7 +11,6 @@ def getLogin():
     else:
         return render_template('login.html')
 
-# @app.route('/login', methods=['POST'])
 @login_blp.route('/login', methods=['POST'])
 def postLogin():
     try:
@@ -36,7 +34,6 @@ def postLogin():
         raise(e)
         pass
 
-# @app.route('/logout', methods = ['GET'])
 @login_blp.route('/logout', methods = ['GET'])
 def getLogout():
     session.pop('email', None)
