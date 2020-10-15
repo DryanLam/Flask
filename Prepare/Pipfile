@@ -11,6 +11,8 @@ flask = "*"
 flask-mysql = "*"
 werkzeug = "*"
 pipfile = "*"
+redis = "*"
+pymongo = "*"
 
 [requires]
 python_version = "3.8"
