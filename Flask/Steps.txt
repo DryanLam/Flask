@@ -114,6 +114,10 @@ docker exec -it rdb redis-cli
 set name "Dryan"
 set raw '{"str": "example", "int": 20}'
 
+# Enable debug mode
+export FLASK_ENV=development
+
+
 
 # Provisioning MySQL
 1. docker-compose up -d

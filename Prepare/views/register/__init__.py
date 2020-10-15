@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 register_blp = Blueprint('register_blp', __name__)
 
 # @app.route('/reg', methods = ['GET'])
-@register_blp.route('/reg', methods = ['GET'])
+@register_blp.route('/register', methods = ['GET'])
 def getRegister():
     if 'email' in session:
         return redirect(url_for('index_blp.index'))
@@ -13,7 +13,7 @@ def getRegister():
         return render_template('signup.html')
 
 # @app.route('/reg', methods = ['POST'])
-@register_blp.route('/reg', methods = ['POST'])
+@register_blp.route('/register', methods = ['POST'])
 def postRegister():
     try:
         # print("Begin processing postRegister")
