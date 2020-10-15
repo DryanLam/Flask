@@ -3,7 +3,7 @@ version: '3'
 services:
   redis:
     image: 'docker.io/bitnami/redis:6.0-debian-10'
-    container_name: 'rdb'
+    container_name: 'redis-db'
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
@@ -13,9 +13,9 @@ services:
     volumes:
       - ./redis_data:/bitnami/redis/data
 
-  db:
+  mysql:
     image: mysql:5.7
-    container_name: 'mdb'
+    container_name: 'mysql-db'
     restart: always
     environment:
       MYSQL_DATABASE: tadp
@@ -27,6 +27,19 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+  mongo:
+    image: mongo:4.2.10-bionic
+    container_name: 'mongo-db'
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - mongodb_data:/data/db
+
 volumes:
+  mongodb_data:
   mysql_data:
     driver: local
