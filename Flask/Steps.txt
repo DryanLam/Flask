@@ -101,6 +101,9 @@ peewee and sqlalchemly don't implement their own db connector, they provide a la
 # White docs sample
 https://realpython.com/python-json/
 
+# Flask structure
+http://exploreflask.com/en/latest/blueprints.html
+
 
 # Env
 1. virtualenv -p python3 env
