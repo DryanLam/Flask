@@ -130,6 +130,8 @@ export FLASK_ENV=development
 # Backup MySQL
 sh backup.sh
 
+# Backup Redis >> Issue regarding folder permission >> sudo chown 1001 to each all foler and files relevant
+
 
 #Test
 1. Login form
