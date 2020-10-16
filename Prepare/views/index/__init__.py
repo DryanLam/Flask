@@ -6,9 +6,10 @@ index_blp = Blueprint('index_blp', __name__)
 
 @index_blp.route('/', methods = ['GET'])
 def index():
+    _price = 999
     if 'email' in session:
         _sessionemail = session['email']
-        return render_template('index.html')
+        return render_template('index.html',price=_price)
     else:
         return redirect(url_for('login_blp.getLogin'))
 
