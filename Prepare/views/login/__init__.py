@@ -4,12 +4,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 login_blp = Blueprint('login_blp', __name__)
 
+
 @login_blp.route('/login', methods=['GET'])
 def getLogin():
     if 'email' in session:
         return redirect(url_for('index_blp.index'))
     else:
         return render_template('login.html')
+
 
 @login_blp.route('/login', methods=['POST'])
 def postLogin():
@@ -21,15 +23,14 @@ def postLogin():
         curs.execute(sql)
         rows = curs.fetchone()
         hashedpassword = rows[0]
-        # print(rows)
         if rows and check_password_hash(hashedpassword, _password):
+            # session.permanent = True          # This option will keep session until logout
             session['email'] = _email
-            print("session set")
+            print("Session is set")
             return redirect(url_for('index_blp.index'))
         else:
-            errors.append("Username and password combination not found.")
+            errors.append("Username and password are not found.")
             return render_template('login.html', errors=errors)
-        print("Got: {0}, {1}".format(_email, _password))
     except Exception as e:
         raise(e)
         pass
