@@ -37,11 +37,12 @@ def order():
 @api_blp.route('/test', methods = ['GET'])
 def test():
     _db = "tadp"
-    _coll = "order"
-    data = {"user": "Dung", "amt": 1, "cost": 999} 
+    _coll = "inventory"
+    data = {"name": "iPhone 12 Pro", "cost": 999, "url": "https://www.apple.com/newsroom/images/product/iphone/standard/apple_iphone-12_new-design_10132020.jpg.landing-big_2x.jpg"} 
     rs = common.mongoUpdateOne(_db,_coll,data)
     return jsonify(str(rs))
 
 
 # curl -i -H "Content-Type: application/json" -d '{"user": "Dung", "amt": 1, "cost": 999}' -X POST localhost:3500/api/v1/order
 # curl -i -H "Content-Type: application/json" -H "Token: name" -d '{"user": "Dung", "amt": 1, "cost": 999}' -X POST localhost:3500/api/v1/order
+# curl -i -H "Content-Type: application/json" -H "Token: name" -d '{"user": "Dung", "amt": 1, "cost": 999}' -X GET localhost:3500/api/v1/test
