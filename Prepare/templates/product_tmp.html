@@ -62,23 +62,19 @@
     </nav>
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <form class="form-product" id="formProduct" method="POST">  <!-- Disble submit form temporarily for testing-->>
+      <div>
           <div class="text-center mb-4">
-            <h1 class="h1 mb-3 font-weight-bold">iPhone 12 Pro</h1>
-            <h1 class="h3 mb-3 font-weight-bold">Price: $999</h1>
+            <h1 class="h1 mb-3 font-weight-bold">Order: iPhone 12 Pro</h1>
+            <h1 class="h3 mb-3 font-weight-bold">Price: ${{price}}</h1>
+            <h1 class="h3 mb-3 font-weight-bold">Cost: ${{cost}}</h1>
             <div>
               <img src="https://www.apple.com/newsroom/images/product/iphone/standard/apple_iphone-12_new-design_10132020.jpg.landing-big_2x.jpg" alt="" width="850" height="500">
             </div>
-            <div>
-              <label class="h6 mb-3 font-weight-normal" for="quantity">Quantity:</label>
-              <input type="number" id="qty" name="quantity" min="1" max="100">
-            </div>
-            <button class="button-decorator">BUY</button>
-        </div>
-    </form>
-        <div>
-            <h5 style="text-align:center;padding-top: 50px;">Just for Eduction</h5>
-        </div>
+          </div>
+      </div>
+      <div>
+        <h5 style="text-align:center;padding-top: 50px;">Just for Eduction</h5>
+      </div>
     </main>
   </div>
 </div>
