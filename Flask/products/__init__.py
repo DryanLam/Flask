@@ -35,6 +35,6 @@ def app_error_handle(e):
     return "There is an error. Please check your request or contact to admin. Thanks."
 
 
-@app.errorhandler(404)
+@app.errorhandler()
 def page_not_found(error):
     return f"Page not found{request.path}"
