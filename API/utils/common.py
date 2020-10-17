@@ -73,7 +73,8 @@ def mongoUpdateOne(db,coll,data):
         client = MongoClient(conn_str)
         db = client.get_database(db)
         coll = db.get_collection(coll)
-        coll.update_one(data, {"$set": data}, upsert=True)              # upsert help to create if not exist and update for current value
+        coll.update_one({"user": data['user']}, {"$set": data}, upsert=True)              # upsert help to create if not exist and update for current value
+        # coll.update_one(data, {"$set": data}, upsert=True)              # upsert help to create if not exist and update for current value
         
         return {"status": "success", "action": "insert", "data": data}
     except:

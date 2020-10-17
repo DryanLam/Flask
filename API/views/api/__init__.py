@@ -13,11 +13,13 @@ def pricing():
     return jsonify(rs)
 
 
-@api_blp.route('/orders', methods = ['GET'])
+@api_blp.route('/order', methods = ['GET'])
 def orders():
+    user = request.args.get('user')
     _db = "tadp"
     _coll = "order"
-    rs = common.mongoFindMany(_db,_coll)
+    _filter = {"user": user}
+    rs = common.mongoFindOne(_db,_coll, _filter)
     return jsonify(rs)
 
 
@@ -44,5 +46,6 @@ def test():
 
 
 # curl -i -H "Content-Type: application/json" -d '{"user": "Dung", "amt": 1, "cost": 999}' -X POST localhost:3500/api/v1/order
+# curl -i -H "Content-Type: application/json" -H "Token: name"  -X GET localhost:3500/api/v1/order?user=abc@gmail.com
 # curl -i -H "Content-Type: application/json" -H "Token: name" -d '{"user": "Dung", "amt": 1, "cost": 999}' -X POST localhost:3500/api/v1/order
 # curl -i -H "Content-Type: application/json" -H "Token: name" -d '{"user": "Dung", "amt": 1, "cost": 999}' -X GET localhost:3500/api/v1/test
