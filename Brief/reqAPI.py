@@ -1,23 +1,24 @@
 import requests
+import json
 
-def doGet(url, params):
-    r = requests.get(url, params) 
+
+def doGet(_url, _params, _headers={}):
+    r = requests.get(url=_url, params=_params, headers=_headers) 
     # extracting data in json format 
     data = r.json() 
     return data
 
 
-def doPost(url, params):
-    r = requests.post(url, params) 
+def doPost(_url, _payload, _headers={}):
+    r = requests.post(url=_url, data=json.dumps(_payload), headers=_headers) 
     data = r.text 
     return data
 
-end_point = "http://maps.googleapis.com/maps/api/geocode/json"
-data = {'api_dev_key': "API_KEY", 
-        'api_option':'paste', 
-        'api_paste_code': "", 
-        'api_paste_format':'python'} 
 
-print(doGet(end_point, data))
-print(doPost(end_point, data))
+# end_point = "http://localhost:3500/api/v1/pricing"
+end_point = "http://localhost:3500/api/v1/order"
+data = {"user": "Dryan", "amt": 1, "cost": 999}
+headers = {"Token": "name", "Content-Type": "application/json"}
 
+print(doGet(end_point, data, headers))
+print(doPost(end_point, data, headers))
