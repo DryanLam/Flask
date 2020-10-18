@@ -1,18 +1,30 @@
 #!/bin/bash
 
-chmod 777 -R Docker/redis_dump
+chmod 777 -R ./Docker/redis_dump
+ls -la ./Docker/redis_dump
 
-docker-compose -f Docker/docker-compose.yml up -d
+# Deploy database services: Redis - Mongodb - MySQL
+docker-compose -f ./Docker/docker-compose.yml up -d
 
-sh Docker/restore.sh
-
-# sh API/env_dev.sh
-# sh API/runner.sh
-
-
-docker run -i --name api python3:latest -v API:/home/test
-docker exec -d api pipenv install Pipfile & pipenv shell & sh runner.sh
+# Initialize base data
+sh ./Docker/restore.sh
 
 
-docker run -i --name webui python3:latest -v API:/home/test
-docker exec -d webui pipenv install Pipfile & pipenv shell & sh runner.sh
+# FOR API
+echo "Starting deploy API server"
+pip3 install -r ./API/requirements.txt
+
+cd API
+sh runner.sh
+echo "Deployed API service successfully"
+
+# Return main source
+cd ..
+
+# FOR WebUI
+echo "Starting deploy Web server"
+pip3 install -r ./WebUI/requirements.txt
+
+cd WebUI
+sh runner.sh
+echo "Deployed WebUI service successfully"
