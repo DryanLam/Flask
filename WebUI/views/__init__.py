@@ -34,9 +34,7 @@ app.register_blueprint(product_blp)
 @app.before_request
 def require_oauth():
     if 'Login' not in request.endpoint and 'Register' not in request.endpoint:
-        if 'token' not in session:
-            return redirect(url_for('login_blp.getLogin'))
-        else:
+        if 'token' in session:
             isExpired = common.isTokenExpired(session['token'])
             if isExpired:
                 return redirect(url_for('login_blp.getLogin'))
