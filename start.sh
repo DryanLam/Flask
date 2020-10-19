@@ -10,7 +10,7 @@ docker-compose -f ./Docker/docker-compose.yml up -d
 sh ./Docker/restore.sh
 
 
-# Using docker
+# Using docker cli
 # docker build -t api .
 # docker run --name capi -d -p 3500:3500 --network="host" api
 
@@ -19,21 +19,22 @@ sh ./Docker/restore.sh
 # docker run --name cweb -d -p 3000:3000 --network="host" web
 
 
+# using for shell
 # FOR API
-echo "Starting deploy API server"
-pip3 install -r ./API/requirements.txt
+# echo "Starting deploy API server"
+# pip3 install -r ./API/requirements.txt
 
-cd API
-sh runner.sh
-echo "Deployed API service successfully"
+# cd API
+# sh runner.sh
+# echo "Deployed API service successfully"
 
-# Return main source
-cd ..
+# # Return main source
+# cd ..
 
-# FOR WebUI
-echo "Starting deploy Web server"
-pip3 install -r ./WebUI/requirements.txt
+# # FOR WebUI
+# echo "Starting deploy Web server"
+# pip3 install -r ./WebUI/requirements.txt
 
-cd WebUI
-sh runner.sh
-echo "Deployed WebUI service successfully"
+# cd WebUI
+# sh runner.sh
+# echo "Deployed WebUI service successfully"
