@@ -10,6 +10,15 @@ docker-compose -f ./Docker/docker-compose.yml up -d
 sh ./Docker/restore.sh
 
 
+# Using docker
+# docker build -t api .
+# docker run --name capi -d -p 3500:3500 --network="host" api
+
+
+# docker build -t web .
+# docker run --name cweb -d -p 3000:3000 --network="host" web
+
+
 # FOR API
 echo "Starting deploy API server"
 pip3 install -r ./API/requirements.txt

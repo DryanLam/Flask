@@ -2,7 +2,7 @@ from views import app
 import os
 
 # app = Flask(__name__)
-port = int(os.environ.get("PORT", 3500))
+port = int(os.environ.get("API_PORT", 3500))
 
 if __name__ == "__main__":
     app.config.from_object('config.DevelopmentConfig')
