@@ -51,6 +51,14 @@ def getPrice():
     return rs['cost']
 
 
+def getProduct():
+    end_point = "http://localhost:3500/api/v1/pricing"
+    query = {}
+    headers = {"Token": session['token'], "Content-Type": "application/json"}
+    rs = doGet(end_point, query, headers)
+    return rs['url']
+
+
 def doOrder(data):
     end_point = "http://localhost:3500/api/v1/order"
     payload = {"user": session['email'], "amt": data['qty'], "cost": data['cost']}
