@@ -12,6 +12,8 @@ services:
       - '6379:6379'
     volumes:
       - ./redis_dump:/bitnami/redis/data
+    networks:
+      - my_net
     command: /opt/bitnami/scripts/redis/run.sh --maxmemory 100mb
 
   mysql:
@@ -27,6 +29,8 @@ services:
       - '3306:3306'
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - my_net
 
   mongo:
     image: mongo:4.2.10-bionic
@@ -36,9 +40,39 @@ services:
       - '27017:27017'
     volumes:
       - mongodb_data:/data/db
+    networks:
+      - my_net
+  
+  web:
+    build:
+      context: ../WebUI
+      dockerfile: ./Dockerfile
+    container_name: 'web-app'
+    restart: always
+    ports:
+      - '3500:3500'
+    network_mode: "host"
+
+
+  api:
+    build:
+      context: ../API
+      dockerfile: ./Dockerfile
+    container_name: 'api-app'
+    restart: always
+    ports:
+      - '3000:3000'
+    network_mode: "host"
+
 
 volumes:
   mongodb_data:
     driver: local
   mysql_data:
     driver: local
+
+
+networks:
+  my_net:
+  kong_net:
+    external: true
