@@ -1,12 +1,10 @@
 #!/bin/bash
-
+sudo apt-get install mysql-server
 cd /vagrant
 pwd
 ls -la
 
 chmod 777 -R ./Docker/redis_dump
-
-export WEB_PORT=80
 
 sh start.sh
 

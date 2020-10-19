@@ -4,13 +4,13 @@
 Vagrant.configure("2") do |config|
   config.vm.define "staging" do |staging|
 
-    staging.vm.hostname = "Team_A"
-    staging.vm.box = "ubuntu/bionic64"
+    staging.vm.hostname = "staging"
+    staging.vm.box = "ubuntu/trusty64"
     staging.vm.synced_folder ".", "/vagrant"
     staging.vm.network "private_network", ip: "192.168.57.10"
 
     staging.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--name", "staging_teama"]
+      vb.customize ["modifyvm", :id, "--name", "staging"]
       vb.memory = "1024"
     end 
 
