@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "staging" do |staging|
 
     staging.vm.hostname = "staging"
-    staging.vm.box = "ubuntu/trusty64"
+    staging.vm.box = "ubuntu/bionic64"
     staging.vm.synced_folder ".", "/vagrant"
     staging.vm.network "private_network", ip: "192.168.57.10"
 
