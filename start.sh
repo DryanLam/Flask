@@ -7,7 +7,7 @@ ls -la ./Docker/redis_dump
 docker-compose -f ./Docker/docker-compose.yml up -d
 
 # Initialize base data
-sh ./Docker/restore.sh
+# sh ./Docker/restore.sh
 
 
 # Using docker cli

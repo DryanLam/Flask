@@ -74,5 +74,5 @@ volumes:
 
 networks:
   my_net:
-  kong_net:
-    external: true
+  # kong_net:
+  #   external: true
