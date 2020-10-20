@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
     dev.vm.hostname = "dev"
     dev.vm.box = "ubuntu/bionic64"
     dev.vm.synced_folder ".", "/vagrant"
+    dev.vm.network "forwarded_port", guest: 80, host: 1080
     dev.vm.network "private_network", ip: "192.168.50.10"
 
     dev.vm.provider "virtualbox" do |vb|
@@ -28,6 +29,7 @@ Vagrant.configure("2") do |config|
     staging.vm.hostname = "staging"
     staging.vm.box = "ubuntu/bionic64"
     staging.vm.synced_folder ".", "/vagrant"
+    staging.vm.network "forwarded_port", guest: 80, host: 2080
     staging.vm.network "private_network", ip: "192.168.60.10"
 
     staging.vm.provider "virtualbox" do |vb|
