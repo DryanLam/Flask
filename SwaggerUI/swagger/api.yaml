@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Swagger TADP
+servers:
+  - url: 'http://localhost/api/v1'
+paths:
+  /order:
+    get:
+      description: API information
+      operationId: findOrder
+      parameters:
+        - name: tags
+          in: query
+          description: tags to filter by
+          required: false
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+        - name: limit
+          in: query
+          description: 0-100
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: order response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/order'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      description: Creates a new order in the inventory. It will overwrite the current order.
+      operationId: addOrder
+      requestBody:
+        description: add order to the inventory
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/order'
+      responses:
+        '200':
+          description: order response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/order'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /pricing:
+    get:
+      description: API information
+      operationId: findPricing
+      parameters:
+        - name: token
+          in: query
+          description: Get product information
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Product response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/pricing'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+components:
+  schemas:
+    order:
+      allOf:
+        - $ref: '#/components/schemas/order'
+        - required:
+            - id
+          properties:
+            id:
+              type: integer
+              format: int64
+    pricing:
+      required:
+        - token
+      properties:
+        name:
+          type: string
+    Error:
+      required:
+        - token
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
