@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo apt-get install mysql-server
-cd /staging
+cd /vagrant
 pwd
 ls -la
 
