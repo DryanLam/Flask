@@ -2,12 +2,33 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+
+  # For dev and config API Gateway
+  config.vm.define "dev" do |dev|
+
+    dev.vm.hostname = "dev"
+    dev.vm.box = "ubuntu/bionic64"
+    dev.vm.synced_folder ".", "/vagrant"
+    dev.vm.network "private_network", ip: "192.168.50.10"
+
+    dev.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--name", "dev"]
+      vb.memory = "1024"
+    end 
+
+    dev.vm.provision :docker
+    dev.vm.provision :docker_compose
+
+    dev.vm.provision "shell", path: "dev_provision.sh"
+  end
+
+  # For staging and config API Gateway
   config.vm.define "staging" do |staging|
 
     staging.vm.hostname = "staging"
     staging.vm.box = "ubuntu/bionic64"
     staging.vm.synced_folder ".", "/vagrant"
-    staging.vm.network "private_network", ip: "192.168.57.10"
+    staging.vm.network "private_network", ip: "192.168.60.10"
 
     staging.vm.provider "virtualbox" do |vb|
       vb.customize ["modifyvm", :id, "--name", "staging"]
@@ -17,33 +38,7 @@ Vagrant.configure("2") do |config|
     staging.vm.provision :docker
     staging.vm.provision :docker_compose
 
-    staging.vm.provision "shell", path: "provision.sh"
+    staging.vm.provision "shell", path: "staging_provision.sh"
   end
 end
-
-
-# Vagrant.configure("2") do |config|
-#   config.vm.box = "ubuntu/bionic64"
-#   config.vm.synced_folder ".", "/vagrant"
-#   config.vm.network "private_network", ip: "192.168.57.10"
-
-#   config.vm.provision :docker
-#   config.vm.provision :docker_compose
-
-#   config.vm.provision "shell", inline: <<-SHELL
-#     cd /vagrant
-#     pwd
-#     ls -la
-#     cd /vagrant/Python_Flask
-#     chmod 777 -R ./Docker/redis_dump
-#     sh start.sh
-#     docker exec -i mongo-db mongorestore --archive --gzip < ./Docker/mongo_dump.gz
-    
-#     docker ps -a 
-#     sleep 5
-#     docker exec -i mysql-db /usr/bin/mysql -uroot -pdryan --force tadp < ./Docker/mysql_dump.sql
-#   SHELL
-# end
-
-
 
